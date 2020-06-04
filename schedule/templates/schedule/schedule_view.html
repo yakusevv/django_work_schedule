@@ -1,6 +1,40 @@
 {% extends 'schedule/base_schedule.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
-
+    <h1> {{ Year }}</h1>
+    {% for month in Months.items %}
+        <div class="row border-top {% if forloop.last %}border-bottom{% endif %}">
+            <div class="col">
+                <button type="button" class="btn btn-lg btn-link ml-0" data-toggle="collapse" data-target="#Month_{{ forloop.counter }}">
+                    {{ month.0 }}
+                </button>
+            </div>
+        </div>
+        <div class="collapse" id="Month_{{ forloop.counter }}">
+        <table class="table mb-0" id="ScheduleTable_{{ forloop.counter }}" name="month_table">
+        <thead>
+          <tr>
+              <th class="border" style="width:50px;"> {% trans "Days" %}</th>
+              {% for worker in Workers %}
+                <th class="border"> {{ worker.user }}</th>
+              {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+            {% for day in month.1 %}
+            <tr {% if day.weekday == 5 or day.weekday == 6 %} style="background-color:green;" {% endif %}>
+                <td class="border">
+                    {{ day.day }}
+                </td>
+                {% for worker in Workers %}
+                    <td class="border"> - </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+        </div>
+    {% endfor %}
 {% endblock %}

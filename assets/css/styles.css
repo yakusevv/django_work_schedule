@@ -1,0 +1,25 @@
+.admin-panel {
+    background: rgba(1, 1, 1, 0.2);
+    border-radius: 2px;
+    position: fixed;
+    left: 15px;
+    bottom: 10px;
+    opacity: 1;
+    padding: 10px;
+    width: 200px;
+    transition: 0.5s;
+    outline: none;
+}
+
+.admin-panel a {
+    display: block;
+    margin: 5px 0;
+}
+
+.admin-panel-element {
+    overflow: hidden;
+}
+
+.admin-panel p {
+    text-align: center;
+}

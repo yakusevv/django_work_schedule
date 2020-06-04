@@ -15,6 +15,7 @@ class DayPlan(models.Model):
     note = models.CharField(max_length=50, blank=False, verbose_name=_("Note"))
     type = models.PositiveSmallIntegerField(choices=TYPES)
     changed_by = models.ForeignKey('profiles.Profile', on_delete=models.PROTECT, related_name=_("work_plan_edited"))
+    edited = models.DateTimeField(verbose_name=_('Edited'))
 
     class Meta:
         unique_together = [('worker', 'day'), ]
